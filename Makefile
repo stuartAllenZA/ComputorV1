@@ -10,7 +10,8 @@ SP = ./src/
 
 SRC = $(SP)main.cpp\
 	  $(SP)LexerClass.cpp\
-	  $(SP)TermClass.cpp
+	  $(SP)TermClass.cpp\
+	  $(SP)ComputorClass.cpp
 
 all : $(TARGET)
 

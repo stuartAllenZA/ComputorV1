@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <LexerClass.hpp>
+#include <ComputorClass.hpp>
 
 #endif
 

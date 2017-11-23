@@ -33,7 +33,6 @@ Lexer::Lexer(const char *expression) {
 	while(std::getline(ss, term, ' '))
 		terms.push_back(term);
 
-	std::vector<Term*> finalExpression;
 
 	int i = 0;
 	for (it = terms.begin(); it != terms.end(); it++) {
@@ -44,27 +43,47 @@ Lexer::Lexer(const char *expression) {
 			std::vector<std::string> tempVec;
 			std::pair<char, int> tempPair;
 
-			std::cout << "match: " << *it << std::endl;
+		//	std::cout << "match: " << *it << std::endl;
 
 			while(std::getline(tempSs, tempToken, '^'))
 				tempVec.push_back(tempToken);
 			tempPair.first = tempVec[0][0];
 			tempPair.second = tempVec[1][0] - 48;
 			Term *termToPush = new Term(tempPair);
-			finalExpression.push_back(termToPush);
+			_finalExpression.push_back(termToPush);
+		}
+		else if (isConstant(*it)) {
+			Term *termToPush = new Term(strtod((*it).c_str(), nullptr));
+			_finalExpression.push_back(termToPush);
+		}
+		else {
+			Term *termToPush = new Term((*it)[0]);
+			_finalExpression.push_back(termToPush);
 		}
 		i++;
 	}
 
 	std::vector<Term*>::iterator finalIt;
-	for (finalIt = finalExpression.begin(); finalIt != finalExpression.end(); finalIt++)
-		(*finalIt)->say();
+	for (finalIt = _finalExpression.begin(); finalIt != _finalExpression.end(); finalIt++) {
+		(*finalIt)->sayClean();
+	}
+	std::cout << std::endl;
 
 	/*
 	 * organize vector into the correct order (leader, descending, etc...)
 	 */
 }
 
+bool Lexer::isConstant(std::string input) {
+	char *p;
+	strtod(input.c_str(), &p);
+	return *p == 0;
+}
+
 Lexer::~Lexer() {
 	std::cout << "Lexer Destructed\n";
+}
+
+std::vector<Term*> Lexer::getExpression() {
+	return this->_finalExpression;
 }

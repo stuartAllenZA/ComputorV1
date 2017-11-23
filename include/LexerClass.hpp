@@ -12,11 +12,14 @@
 
 class Lexer {
 	private:
+		std::vector<Term*> _finalExpression;
 
 	public:
 		Lexer();
 		~Lexer();
 		Lexer(const char *);
+		bool isConstant(std::string);
+		std::vector<Term*> getExpression();
 };
 
 #endif

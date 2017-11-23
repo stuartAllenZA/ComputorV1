@@ -11,14 +11,16 @@ class Term {
 		int			_degree;
 		char		_symbol;
 		std::string _type;
+		double		_value;
 
 	public:
 		Term();
 		~Term();
 		Term(char);
-		Term(int);
+		Term(double);
 		Term(std::pair<char, int>);
 		void	say();
+		void	sayClean();
 
 		// getters
 		char 		getCoefficient();

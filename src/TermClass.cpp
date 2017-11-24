@@ -13,6 +13,7 @@ Term::Term(char operation) {
 //		<< operation
 //		<< std::endl;
 	this->_symbol = operation;
+	this->_type = "operation";
 }
 
 Term::Term(double term) {
@@ -27,10 +28,18 @@ Term::Term(std::pair<char, int> term) {
 //	std::cout << "Term constructed with (std::pair<char, int>) overload:\n"
 //		<< term.first << "^" << std::to_string(term.second)
 //		<< std::endl;
+	/*
+	std::cout << "Here: value is: " << term.second << std::endl;
+	if (term.second > 2) {
+		std::cout << "error\n";
+	}
+	*/
+
 	if (term.second == 0) {
 		this->_value = 1;
 		this->_type = "constant";
 	}
+
 	else {
 		this->_coefficient = term.first;
 		this->_degree = term.second;
@@ -59,4 +68,15 @@ void Term::sayClean() {
 
 std::string	Term::getType() {
 	return this->_type;
+}
+
+int		Term::getConstValue() {
+	return this->_value;
+}
+
+std::pair<char, int>	Term::getCoefValue(){
+	std::pair<char, int> temp;
+	temp.first = this->_coefficient;
+	temp.second = this->_degree;
+	return temp;
 }

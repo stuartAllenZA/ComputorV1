@@ -25,3 +25,6 @@ re : clean all
 
 test : re
 	@./$(TARGET) "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
+
+dumbTest : re
+	@./$(TARGET) "5 * X^0 + 4 * X^1 - 9.3 * X^3 = 1 * X^0"

@@ -27,12 +27,16 @@ class Term {
 		int 		getDegree();
 		char		getSymbol();
 		std::string getType();
+		int			getConstValue();
+		std::pair<char, int>	getCoefValue();
 
 		// setters
 		void	setCoefficient(char);
 		void	setDegree(int);
 		void	setSymbol(char);
 		void	setType(std::string);
+		void	setConstValue(int);
+		void	setCoefValue(std::pair<char, int>);
 };
 
 #endif

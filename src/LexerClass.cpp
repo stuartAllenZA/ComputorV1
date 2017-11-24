@@ -14,22 +14,6 @@ Lexer::Lexer(const char *expression) {
 	std::vector<std::string> terms;
 	std::vector<std::string>::iterator it;
 
-	// vector<Term>
-	// while(ss) {
-	// if (makeNeg = true) {
-	//		makeNeg ?
-	// }
-	//	if (coefficients and degrees) {
-	//		split these
-	//		form pair
-	//		create new term
-	//		push term to vector
-	//	}
-	//	else if ('=') {
-	//		bool makeNeg = true;
-	//	}
-	// }
-	//
 	while(std::getline(ss, term, ' '))
 		terms.push_back(term);
 
@@ -62,12 +46,6 @@ Lexer::Lexer(const char *expression) {
 		}
 		i++;
 	}
-
-	std::vector<Term*>::iterator finalIt;
-	for (finalIt = _finalExpression.begin(); finalIt != _finalExpression.end(); finalIt++) {
-		(*finalIt)->sayClean();
-	}
-	std::cout << std::endl;
 
 	/*
 	 * organize vector into the correct order (leader, descending, etc...)
